@@ -37,13 +37,13 @@
 			}
 		}
 		if (!different) {
-			//window.location.reload();
+			window.location.reload();
             console.log("REFRESH");
 		} else {
 			different = false;
 			old_values = getFieldData();
 		}
-	}, 10000);
+	}, 600000);
 })();
 
 function getFieldData() {
