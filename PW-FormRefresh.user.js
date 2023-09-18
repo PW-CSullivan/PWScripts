@@ -1,40 +1,50 @@
 // ==UserScript==
 // @name         Public Works Form Refresh
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Used to refresh the page for Public Works Laserfiche forms every 10 minutes if there is no data in the fields or if the same data is in the fields for the last 10 minutes. 
 // @author       Christopher Sullivan
-// @include      https://bc-forms/Forms/VehicleRepairRequest
+// @match        https://bc-forms/Forms/VehicleRepairRequest
 // @require      https://raw.githubusercontent.com/PW-CSullivan/PWScripts/main/SearchElements.js
-// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/main/PW-FormRefresh.user.js
-// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/main/PW-FormRefresh.user.js
-// @run-at document-idle
+// @require      https://github.com/PW-CSullivan/PWScripts/raw/main/Waiter.js
+// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/master/PW-FormRefresh.user.js
+// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/master/PW-FormRefresh.user.js
 // @grant        none
 // ==/UserScript==
 
 // Main function that runs on page load.
 (function () {
-	var old_values = getFieldData();
+    'use strict';
+    var wait = new Waiter();
+    var old_values = [];
+    wait.addTable(function (table_number) {
+        old_values = getFieldData();
+        wait.clearTable(table_number);
+    });
+    console.log("HERE");
+    console.log("Old Values: " + old_values.length);
 	// Runs once every 10 minutes.
-	var check_run = setInterval(function () {
+    wait.addSingle("Main", function () {
 		var values = getFieldData();
 		var different = false;
 		if (old_values.length == values.length) {
 			for (var i = 0; i < old_values.length; i++) {
 				if (old_values[i] != values[i]) {
+                    console.log("I: " + i);
 					different = true;
 					break;
 				}
 			}
 		}
 		if (!different) {
-			window.location.reload();
+			//window.location.reload();
+            console.log("REFRESH");
 		} else {
 			different = false;
 			old_values = getFieldData();
 		}
-	}, 600000);
-});
+	}, 10000);
+})();
 
 function getFieldData() {
 	var texts = [];
