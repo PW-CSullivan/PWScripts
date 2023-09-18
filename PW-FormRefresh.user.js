@@ -6,8 +6,8 @@
 // @author       Christopher Sullivan
 // @include      https://bc-forms/Forms/VehicleRepairRequest
 // @require      https://raw.githubusercontent.com/PW-CSullivan/PWScripts/main/SearchElements.js
-// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/master/PW-FormRefresh.user.js
-// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/master/PW-FormRefresh.user.js
+// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/main/PW-FormRefresh.user.js
+// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/main/PW-FormRefresh.user.js
 // @run-at document-idle
 // @grant        none
 // ==/UserScript==
