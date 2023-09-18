@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Public Works Form Refresh
 // @namespace    http://tampermonkey.net/
-// @version      1.0.2
+// @version      1.0.3
 // @description  Used to refresh the page for Public Works Laserfiche forms every 10 minutes if there is no data in the fields or if the same data is in the fields for the last 10 minutes. 
 // @author       Christopher Sullivan
 // @match        https://bc-forms/Forms/VehicleRepairRequest
 // @require      https://raw.githubusercontent.com/PW-CSullivan/PWScripts/main/SearchElements.js
 // @require      https://github.com/PW-CSullivan/PWScripts/raw/main/Waiter.js
-// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/master/PW-FormRefresh.user.js
-// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/master/PW-FormRefresh.user.js
+// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/main/PW-FormRefresh.user.js
+// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/main/PW-FormRefresh.user.js
 // @grant        none
 // ==/UserScript==
 
