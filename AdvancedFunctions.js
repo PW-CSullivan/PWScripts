@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Advanced Functions
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Used with my other scripts for advanced forms of JQuery Searches
 // @author       Christopher Sullivan
 // @match        *
@@ -27,6 +27,27 @@ function findSingle(selector, element=false) {
         return $(selector).first();
     }
     return selector.first();
+}
+
+/**
+ * check - checks to see if an dom object exists while using
+ * a css selector to find it.
+ *
+ * @param css - String
+ * @param element - Element Object from document
+ * @return boolean
+ */
+function checkExist(css, element=false) {
+    if (element === false) {
+        if ($(css).length > 0) {
+            return true;
+        }
+    } else {
+        if (element.find(css).length > 0) {
+            return true;
+        }
+    }
+    return false;
 }
 
 /**
@@ -73,18 +94,11 @@ function setField(selector, text, element=false) {
  */
 function addTag(loc, tag, id='', el_class='', text='', style='') {
     loc = findSingle(loc);
-    var element = false;
-    if (text != '') {
-        element = loc.add(tag, text);
-    } else {
-        element = loc.add(tag);
-    }
-    if (id != '') {
-        element.attr('id', id);
-    }
-    if (el_class != '') {
-        element.addClass(el_class); 
-    }
+    var element = $("<" + tag + "/>", {
+        "id": id,
+        "class": el_class,
+        "text": text
+    });
     if (style != '') {
         element.css(style);
     }
@@ -145,33 +159,33 @@ function createDropdown(loc, items, id='', el_class='') {
 }
 
 /**
-     * createEmptyTable
-     * Function creates an empty Table in accela style and returns the table 
-     * that was created.
-     * 
-     * @param loc - element to append to.
-     * @param id - id of new table
-     * @param el_class - class of new table
-     * @param width - width attribute of new table
-     * @param ignore - ignore attributte of new table
-     * @return Tag Element - New table
-     */
-    function createEmptyTable(loc, id='', el_class='', width='', ignore='') {
-        var table = createTagAppend(loc, "table", id, el_class);
-        if (width != '') {
-            table.setAttribute("width", width);
-        }
-        if (ignore != '') {
-            table.setAttribute("ignore", ignore);
-        }
-        table.setAttribute("border", "0");
-        table.setAttribute("cellpadding", "0");
-        table.setAttribute("cellspacing", "0");
-        var tbody = createTagAppend(table, "tbody");
-        var tr = createTagAppend(tbody, "tr");
-        createTagAppend(tr, "td");
-        return table;
+ * createEmptyTable
+ * Function creates an empty Table in accela style and returns the table 
+ * that was created.
+ * 
+ * @param loc - element to append to.
+ * @param id - id of new table
+ * @param el_class - class of new table
+ * @param width - width attribute of new table
+ * @param ignore - ignore attributte of new table
+ * @return Tag Element - New table
+ */
+function createEmptyTable(loc, id='', el_class='', width='', ignore='') {
+    var table = createTagAppend(loc, "table", id, el_class);
+    if (width != '') {
+        table.setAttribute("width", width);
     }
+    if (ignore != '') {
+        table.setAttribute("ignore", ignore);
+    }
+    table.setAttribute("border", "0");
+    table.setAttribute("cellpadding", "0");
+    table.setAttribute("cellspacing", "0");
+    var tbody = createTagAppend(table, "tbody");
+    var tr = createTagAppend(tbody, "tr");
+    createTagAppend(tr, "td");
+    return table;
+}
 
 /**
  * runAngularTrigger
