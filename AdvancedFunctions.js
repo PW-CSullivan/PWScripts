@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Advanced Functions
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Used with my other scripts for advanced forms of JQuery Searches
 // @author       Christopher Sullivan
 // @match        *
 // @require      https://code.jquery.com/jquery-3.7.1.js
 // @require      https://requirejs.org/docs/release/2.3.5/minified/require.js
-// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/main/AdvancedSearch.user.js
-// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/main/AdvancedSearch.user.js
+// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/main/AdvancedFunctions.user.js
+// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/main/AdvancedFunctions.user.js
 // @grant        none
 // ==/UserScript==
 /**
