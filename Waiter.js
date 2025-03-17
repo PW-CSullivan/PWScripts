@@ -6,8 +6,8 @@
 // @author       Christopher Sullivan
 // @match        *
 // @require      https://raw.githubusercontent.com/PW-CSullivan/PWScripts/main/SearchElements.js
-// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/main/Waiter.user.js
-// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/main/Waiter.user.js
+// @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/main/Waiter.js
+// @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/main/Waiter.js
 // @grant        none
 // ==/UserScript==
 function Waiter() {
