@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         Waiter
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Used by my other scripts to do automation
 // @author       Christopher Sullivan
 // @match        *
-// @require      https://code.jquery.com/jquery-3.7.1.js
-// @require      https://requirejs.org/docs/release/2.3.5/minified/require.js
+// @require      https://raw.githubusercontent.com/PW-CSullivan/PWScripts/main/SearchElements.js
 // @downloadURL  https://github.com/PW-CSullivan/PWScripts/raw/main/Waiter.user.js
 // @updateURL    https://github.com/PW-CSullivan/PWScripts/raw/main/Waiter.user.js
 // @grant        none
@@ -133,14 +132,9 @@ function Waiter() {
     };
     // Checks to see if button can be clicked then clicks it
     this.checkButtonClick = function(table_number, title, selector='button', element=false) {
-        var button = false;
-        if (element !== false) {
-            button = element.find(selector + ":contains('" + title + "')").first();
-        } else {
-            button = $(selector + ":contains('" + title + "')").first();
-        }
-        if (button.length) {
-            if (!button.prop('disabled')) {
+        var button = findByText(selector, title, element);
+        if (button) {
+            if (!button.disabled) {
                 button.click();
                 sleep(100).then(() => {
                     this.clearTable(table_number);
@@ -149,5 +143,5 @@ function Waiter() {
             }
         }
         return false;
-    };
+    }
 }
