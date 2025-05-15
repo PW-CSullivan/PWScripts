@@ -176,13 +176,13 @@ function remove(css, text="", css_sib="", element=false) {
  * @return boolean
  */
 function checkExist(css, element=false) {
-    if (element !== false) {
-        if (find(css)) {
+    if (element === false) {
+        if (document.querySelector(css)) {
             return true;
         }
         return false;
     }
-    if (find(css) && find(element)) {
+    if (document.querySelector(css) && document.querySelector(element)) {
         if (findAll(css, element).length > 0) {
             return true;
         }
