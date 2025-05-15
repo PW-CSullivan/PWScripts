@@ -176,11 +176,19 @@ function remove(css, text="", css_sib="", element=false) {
  * @return boolean
  */
 function checkExist(css, element=false) {
-    if (findAll(css, element).length > 0) {
-        return true;
-    } else {
+    if (element !== false) {
+        if (find(css)) {
+            return true;
+        }
         return false;
     }
+    if (find(css) && find(element)) {
+        if (findAll(css, element).length > 0) {
+            return true;
+        }
+        return false;
+    }
+    return false;
 }
 
 function checkExistInFrame(frame, css) {
