@@ -181,12 +181,15 @@ function checkExist(css, element=false) {
             return true;
         }
         return false;
-    }
-    if (document.querySelector(css) && document.querySelector(element)) {
-        if (findAll(css, element).length > 0) {
-            return true;
+    } else if (typeof element == 'string') {
+        if (document.querySelector(css) && document.querySelector(element)) {
+            if (findAll(css, element).length > 0) {
+                return true;
+            }
+            return false;
         }
-        return false;
+    } else if (element.querySelector(css)) {
+        return true;
     }
     return false;
 }
