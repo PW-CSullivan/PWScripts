@@ -1,0 +1,41 @@
+/* 1. Thumbnail styling */
+.zoomable {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.zoomable:hover {
+  transform: scale(1.05);
+}
+
+/* 2. Floating full-screen backdrop */
+#lightbox {
+  display: none;
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  inset: 0 !important;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  overflow: auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  cursor: zoom-out;
+}
+
+/* 3. Full-size floating image */
+#lightbox img {
+  display: block;
+  margin: 0 auto;
+  width: auto;         /* Renders at true full resolution */
+  max-width: none;     /* Overrides any global CMS "img { max-width: 100% }" rule */
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: popIn 0.2s ease-out;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
